@@ -1,0 +1,1000 @@
+/* =========================================
+   GENERAL RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    color: #ffffff;
+}
+
+
+/* =========================================
+   VIDEO BACKGROUND
+========================================= */
+
+.video-background {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -2;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #10233d,
+            #234c6b
+        );
+}
+
+.video-background video {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    transform: translate(-50%, -50%);
+
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(4, 22, 40, 0.88),
+            rgba(10, 54, 78, 0.72)
+        );
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   MAIN WRAPPER
+========================================= */
+
+.survey-wrapper {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 15px;
+}
+
+
+/* =========================================
+   SURVEY CARD
+========================================= */
+
+.survey-card {
+    width: 100%;
+    max-width: 900px;
+
+    min-height: 650px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+
+    padding: 35px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress-container {
+    margin-bottom: 25px;
+}
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 13px;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+
+    height: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    border-radius: 50px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #58d6ff,
+            #ffffff
+        );
+
+    border-radius: 50px;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+/* =========================================
+   SLIDES
+========================================= */
+
+.survey-slide {
+    display: none;
+
+    min-height: 520px;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    animation:
+        slideIn 0.4s ease;
+}
+
+.survey-slide.active {
+    display: flex;
+}
+
+@keyframes slideIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =========================================
+   INTRODUCTION
+========================================= */
+
+.intro-content {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin:
+        auto;
+}
+
+.clinic-icon {
+    width: 90px;
+    height: 90px;
+
+    margin:
+        0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 48px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.intro-content h1 {
+    font-size: clamp(32px, 5vw, 52px);
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.intro-content h1 span {
+    display: block;
+
+    font-weight: 300;
+
+    font-size:
+        clamp(22px, 3vw, 34px);
+
+    margin-top: 10px;
+}
+
+.intro-description {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.86);
+
+    margin-bottom: 35px;
+}
+
+.survey-info {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.survey-info div {
+    min-width: 120px;
+
+    padding: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 15px;
+}
+
+.survey-info strong {
+    display: block;
+
+    font-size: 25px;
+}
+
+.survey-info span {
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.slide-content {
+    max-width: 750px;
+
+    width: 100%;
+
+    margin:
+        auto;
+}
+
+.slide-number {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color:
+        #7cddff;
+
+    margin-bottom: 15px;
+}
+
+.slide-content h2 {
+    font-size: clamp(26px, 4vw, 38px);
+
+    margin-bottom: 20px;
+}
+
+.slide-content > p {
+    line-height: 1.7;
+
+    color:
+        rgba(255, 255, 255, 0.8);
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   INSTRUCTIONS
+========================================= */
+
+.instruction-box {
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.instruction-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+}
+
+.choice-circle {
+    width: 18px;
+    height: 18px;
+
+    min-width: 18px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+}
+
+.choice-circle.excellent {
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.choice-circle.good {
+    opacity: 0.75;
+}
+
+.choice-circle.neutral {
+    opacity: 0.5;
+}
+
+.choice-circle.never {
+    opacity: 0.25;
+}
+
+.instruction-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+}
+
+.instruction-item p {
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+}
+
+.important-note {
+    margin-top: 20px;
+
+    padding: 15px 18px;
+
+    border-left:
+        4px solid #72ddff;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   QUESTION SLIDES
+========================================= */
+
+.question-slide {
+    justify-content: flex-start;
+}
+
+.question-header {
+    margin-bottom: 20px;
+
+    font-size: 13px;
+
+    color:
+        #7cddff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.question-slide h2 {
+    font-size:
+        clamp(24px, 3.5vw, 36px);
+
+    line-height: 1.3;
+
+    max-width: 780px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   CHOICES
+========================================= */
+
+.choices {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    width: 100%;
+}
+
+.choice {
+    position: relative;
+
+    cursor: pointer;
+}
+
+.choice input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.choice-content {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-height: 110px;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    border:
+        2px solid rgba(255, 255, 255, 0.13);
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    transition:
+        all 0.25s ease;
+}
+
+.choice-content strong {
+    font-size: 19px;
+
+    margin-bottom: 7px;
+}
+
+.choice-content small {
+    font-size: 12px;
+
+    color:
+        rgba(255, 255, 255, 0.6);
+}
+
+.choice:hover .choice-content {
+    transform: translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.13);
+
+    border-color:
+        rgba(255, 255, 255, 0.4);
+}
+
+.choice input:checked + .choice-content {
+    background:
+        rgba(91, 211, 255, 0.18);
+
+    border-color:
+        #72ddff;
+
+    box-shadow:
+        0 0 0 3px rgba(114, 221, 255, 0.1);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation-buttons {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: auto;
+
+    padding-top: 30px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn {
+    border: none;
+
+    border-radius: 12px;
+
+    padding:
+        14px 26px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        all 0.25s ease;
+}
+
+.btn-primary {
+    background:
+        #ffffff;
+
+    color:
+        #14334b;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    color:
+        #ffffff;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background:
+        rgba(255, 255, 255, 0.18);
+}
+
+.btn-submit {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 18px;
+
+    font-size: 18px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #147ca3,
+            #0a526f
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-submit:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================
+   CONCLUSION
+========================================= */
+
+.conclusion-slide {
+    text-align: center;
+
+    align-items: center;
+
+    justify-content: center;
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 55px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border:
+        2px solid rgba(255, 255, 255, 0.3);
+
+    margin-bottom: 25px;
+}
+
+.conclusion-slide h2 {
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+.conclusion-slide p {
+    line-height: 1.7;
+
+    color:
+        rgba(255, 255, 255, 0.85);
+}
+
+.conclusion-subtext {
+    font-size: 14px;
+
+    margin-top: 10px;
+
+    color:
+        rgba(255, 255, 255, 0.6) !important;
+}
+
+.response-summary {
+    margin-top: 25px;
+
+    padding: 12px 20px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   NOTIFICATION OVERLAY
+========================================= */
+
+.notification-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(0, 0, 0, 0.8);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    z-index: 9999;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        all 0.3s ease;
+}
+
+.notification-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.notification-box {
+    width: 100%;
+
+    max-width: 650px;
+
+    min-height: 420px;
+
+    padding: 55px 40px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    background:
+        rgba(20, 45, 65, 0.97);
+
+    border:
+        2px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.6);
+
+    transform:
+        scale(0.75);
+
+    transition:
+        transform 0.35s ease;
+}
+
+.notification-overlay.show .notification-box {
+    transform:
+        scale(1);
+}
+
+.notification-icon {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    margin:
+        0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 65px;
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border:
+        3px solid rgba(255, 255, 255, 0.4);
+}
+
+.notification-box h2 {
+    font-size:
+        clamp(35px, 7vw, 65px);
+
+    margin-bottom: 15px;
+}
+
+.notification-box p {
+    font-size:
+        clamp(16px, 2vw, 20px);
+
+    line-height: 1.6;
+
+    color:
+        rgba(255, 255, 255, 0.8);
+
+    margin-bottom: 30px;
+}
+
+.notification-button {
+    min-width: 180px;
+}
+
+
+/* =========================================
+   VALIDATION MESSAGE
+========================================= */
+
+.validation-message {
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translate(-50%, 120px);
+
+    background:
+        rgba(150, 45, 45, 0.95);
+
+    color:
+        #ffffff;
+
+    padding:
+        15px 25px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    z-index: 10000;
+
+    transition:
+        transform 0.3s ease;
+
+    font-weight: 600;
+}
+
+.validation-message.show {
+    transform:
+        translate(-50%, 0);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .survey-wrapper {
+        padding: 10px;
+    }
+
+    .survey-card {
+        padding: 22px;
+
+        min-height: 680px;
+
+        border-radius: 20px;
+    }
+
+    .instruction-box {
+        grid-template-columns: 1fr;
+    }
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+    .choice-content {
+        min-height: 90px;
+    }
+
+    .navigation-buttons {
+        flex-direction: column-reverse;
+    }
+
+    .navigation-buttons .btn {
+        width: 100%;
+    }
+
+    .intro-content h1 {
+        font-size: 32px;
+    }
+
+    .survey-info {
+        gap: 8px;
+    }
+
+    .survey-info div {
+        min-width: 90px;
+
+        padding: 12px;
+    }
+
+    .notification-box {
+        min-height: auto;
+
+        padding:
+            40px 20px;
+    }
+
+    .notification-icon {
+        width: 90px;
+        height: 90px;
+
+        font-size: 50px;
+    }
+
+}

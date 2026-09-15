@@ -2,7 +2,7 @@
    BENEDICTO COLLEGE CLINIC SURVEY
 ========================================= */
 
-const SUBMISSION_URL = "https://script.google.com/macros/s/AKfycbxdHfBfhz98GV6pVgKrLxGFGCi2YV3t_xf-S-Ip6YLgw87facj49mpPzaKch-tobn4R/exec";
+const SUBMISSION_URL = "https://script.google.com/macros/s/AKfycbwBG5g2f3Uj6T4-OH4Iv9RSDBpqfzwaZHmTZ-sXs8vm9EUsXl9-wj_9wR3MRF19HrrI/exec";
 
 
 /* =========================================
@@ -37,6 +37,37 @@ const notificationButton = document.getElementById("notificationButton");
 
 
 /* =========================================
+   RESPONDENT INFORMATION VALIDATION
+========================================= */
+
+function validateRespondentInformation() {
+    const name = document.getElementById("respondentName");
+    const age = document.getElementById("respondentAge");
+    const educationalLevel = document.getElementById("educationalLevel");
+
+    if (!name.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your name before continuing.");
+        name.focus();
+        return false;
+    }
+
+    if (!age.value.trim() || Number(age.value) < 1 || Number(age.value) > 120) {
+        showValidationMessage([], "⚠️ Please enter a valid age before continuing.");
+        age.focus();
+        return false;
+    }
+
+    if (!educationalLevel.value) {
+        showValidationMessage([], "⚠️ Please select your educational level before continuing.");
+        educationalLevel.focus();
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================
    VALIDATION MESSAGE
 ========================================= */
 
@@ -55,6 +86,12 @@ updateSlide();
 ========================================= */
 
 function nextSlide() {
+
+    if (currentSlide === 2) {
+        if (!validateRespondentInformation()) {
+            return;
+        }
+    }
 
     if (isQuestionSlide(currentSlide)) {
         const unansweredQuestions = getUnansweredQuestionsOnCurrentSlide();
@@ -102,8 +139,10 @@ function updateSlide() {
         slideCounter.textContent = "Introduction";
     } else if (currentSlide === 1) {
         slideCounter.textContent = "Instructions";
-    } else if (currentSlide >= 2 && currentSlide <= 5) {
-        const firstQuestion = ((currentSlide - 2) * 3) + 1;
+    } else if (currentSlide === 2) {
+        slideCounter.textContent = "Respondent Information";
+    } else if (currentSlide >= 3 && currentSlide <= 6) {
+        const firstQuestion = ((currentSlide - 3) * 3) + 1;
         const lastQuestion = firstQuestion + 2;
         slideCounter.textContent = `Questions ${firstQuestion}–${lastQuestion} of ${totalQuestions}`;
     } else {
@@ -119,7 +158,7 @@ function updateSlide() {
 ========================================= */
 
 function isQuestionSlide(slideIndex) {
-    return slideIndex >= 2 && slideIndex <= 5;
+    return slideIndex >= 3 && slideIndex <= 6;
 }
 
 
@@ -242,11 +281,44 @@ document.querySelectorAll(".rating-button").forEach(button => {
 
 
 /* =========================================
+   RESPONDENT INFORMATION VALIDATION
+========================================= */
+
+function validateRespondentInformation() {
+    const name = document.getElementById("respondentName");
+    const age = document.getElementById("respondentAge");
+    const educationalLevel = document.getElementById("educationalLevel");
+
+    if (!name.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your name before continuing.");
+        name.focus();
+        return false;
+    }
+
+    if (!age.value.trim() || Number(age.value) < 1 || Number(age.value) > 120) {
+        showValidationMessage([], "⚠️ Please enter a valid age before continuing.");
+        age.focus();
+        return false;
+    }
+
+    if (!educationalLevel.value) {
+        showValidationMessage([], "⚠️ Please select your educational level before continuing.");
+        educationalLevel.focus();
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================
    VALIDATION MESSAGE
 ========================================= */
 
-function showValidationMessage(unansweredQuestions = []) {
-    if (unansweredQuestions.length > 0) {
+function showValidationMessage(unansweredQuestions = [], customMessage = "") {
+    if (customMessage) {
+        validationMessage.textContent = customMessage;
+    } else if (unansweredQuestions.length > 0) {
         validationMessage.textContent =
             `⚠️ Please answer question${unansweredQuestions.length > 1 ? "s" : ""} ${unansweredQuestions.join(", ")} before continuing.`;
     } else {
@@ -314,7 +386,7 @@ function showFailedNotification() {
    COLLECT RESPONSES
 ========================================= */
 
-function collectResponses () {
+function collectResponses() {
     const responses = {};
 
     for (let question = 1; question <= totalQuestions; question++) {
@@ -347,6 +419,12 @@ function allQuestionsAnswered() {
 surveyForm.addEventListener("submit", async function(event) {
     event.preventDefault();
 
+    if (!validateRespondentInformation()) {
+        currentSlide = 2;
+        updateSlide();
+        return;
+    }
+
     if (!allQuestionsAnswered()) {
         alert("Please answer all 12 questions before submitting.");
         return;
@@ -358,6 +436,9 @@ surveyForm.addEventListener("submit", async function(event) {
     const surveyData = {
         surveyTitle: "Benedicto College Clinic Area Survey",
         submittedAt: new Date().toISOString(),
+        name: document.getElementById("respondentName").value.trim(),
+        age: document.getElementById("respondentAge").value.trim(),
+        educationalLevel: document.getElementById("educationalLevel").value,
         responses: collectResponses()
     };
 
@@ -454,7 +535,7 @@ const backgroundVideo = document.getElementById("backgroundVideo");
 if (backgroundVideo) {
     backgroundVideo.addEventListener("error", function() {
         console.warn(
-            "Background video is hidden because the survey uses the requested light gray background."
+            "Background video is hidden because the survey uses the requested dark blue background."
         );
     });
 }

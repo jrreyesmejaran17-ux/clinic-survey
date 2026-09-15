@@ -14,7 +14,7 @@
     <!-- =========================================
          BACKGROUND
          The original background video is retained in the project,
-         but the survey now uses a light gray background as requested.
+         and the survey uses the requested dark blue background.
     ========================================== -->
     <div class="video-background">
         <video id="backgroundVideo" autoplay muted loop playsinline aria-hidden="true">
@@ -164,9 +164,77 @@
 
 
                 <!-- =================================
+                     SLIDE 3 - RESPONDENT INFORMATION
+                ================================== -->
+                <section class="survey-slide respondent-slide" data-slide="2">
+                    <div class="slide-content respondent-content">
+                        <div class="slide-number">02</div>
+
+                        <h2>Respondent Information</h2>
+
+                        <p>
+                            Please provide the following information before answering the survey questions.
+                            This information will help us organize and understand the survey responses.
+                        </p>
+
+                        <div class="respondent-form">
+                            <div class="form-group">
+                                <label for="respondentName">Name</label>
+                                <input
+                                    type="text"
+                                    id="respondentName"
+                                    name="respondentName"
+                                    placeholder="Enter your name"
+                                    autocomplete="name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="respondentAge">Age</label>
+                                <input
+                                    type="number"
+                                    id="respondentAge"
+                                    name="respondentAge"
+                                    placeholder="Enter your age"
+                                    min="1"
+                                    max="120"
+                                    inputmode="numeric"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="educationalLevel">Educational Level</label>
+                                <select id="educationalLevel" name="educationalLevel" required>
+                                    <option value="">Select educational level</option>
+                                    <option value="Elementary">Elementary</option>
+                                    <option value="Junior High">Junior High</option>
+                                    <option value="Senior High">Senior High</option>
+                                    <option value="College">College</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <p class="form-note">All fields are required before continuing.</p>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
+                            ← Back
+                        </button>
+
+                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
+                            Continue to Questions →
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- =================================
                      SLIDE 3 - QUESTIONS 1–3
                 ================================== -->
-                <section class="survey-slide question-slide" data-slide="2">
+                <section class="survey-slide question-slide" data-slide="3">
                     <div class="question-header">
                         <span>Questions 1–3 of 12</span>
                     </div>
@@ -227,7 +295,7 @@
                 <!-- =================================
                      SLIDE 4 - QUESTIONS 4–6
                 ================================== -->
-                <section class="survey-slide question-slide" data-slide="3">
+                <section class="survey-slide question-slide" data-slide="4">
                     <div class="question-header">
                         <span>Questions 4–6 of 12</span>
                     </div>
@@ -285,7 +353,7 @@
                 <!-- =================================
                      SLIDE 5 - QUESTIONS 7–9
                 ================================== -->
-                <section class="survey-slide question-slide" data-slide="4">
+                <section class="survey-slide question-slide" data-slide="5">
                     <div class="question-header">
                         <span>Questions 7–9 of 12</span>
                     </div>
@@ -343,7 +411,7 @@
                 <!-- =================================
                      SLIDE 6 - QUESTIONS 10–12
                 ================================== -->
-                <section class="survey-slide question-slide" data-slide="5">
+                <section class="survey-slide question-slide" data-slide="6">
                     <div class="question-header">
                         <span>Questions 10–12 of 12</span>
                     </div>
@@ -401,7 +469,7 @@
                 <!-- =================================
                      SLIDE 7 - CONCLUSION / SUBMISSION
                 ================================== -->
-                <section class="survey-slide conclusion-slide" data-slide="6">
+                <section class="survey-slide conclusion-slide" data-slide="7">
                     <div class="success-icon">✓</div>
 
                     <h2>Thank You for Your Time!</h2>

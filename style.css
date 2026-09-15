@@ -24,6 +24,8 @@ body {
     overflow-x: hidden;
 
     color: #ffffff;
+
+    background: #123B5D;
 }
 
 
@@ -43,15 +45,12 @@ body {
 
     overflow: hidden;
 
-    background:
-        linear-gradient(
-            135deg,
-            #10233d,
-            #234c6b
-        );
+    background: #123B5D;
 }
 
 .video-background video {
+    display: none;
+
     position: absolute;
 
     top: 50%;
@@ -69,6 +68,8 @@ body {
 }
 
 .video-overlay {
+    display: none;
+
     position: absolute;
 
     inset: 0;
@@ -467,118 +468,186 @@ body {
 }
 
 .question-header {
-    margin-bottom: 20px;
-
+    margin-bottom: 18px;
     font-size: 13px;
-
-    color:
-        #7cddff;
-
+    color: #7cddff;
     text-transform: uppercase;
-
     letter-spacing: 1px;
 }
 
-.question-slide h2 {
-    font-size:
-        clamp(24px, 3.5vw, 36px);
-
-    line-height: 1.3;
-
-    max-width: 780px;
-
-    margin-bottom: 30px;
-}
-
-
-/* =========================================
-   CHOICES
-========================================= */
-
-.choices {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 15px;
-
+.question-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     width: 100%;
+    margin: 0 auto;
 }
 
-.choice {
-    position: relative;
+.question-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 22px;
+    padding: 17px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.25s ease;
+}
 
+.question-item.answered {
+    border-color: rgba(114, 221, 255, 0.35);
+}
+
+.question-text {
+    min-width: 0;
+}
+
+.question-number {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #7cddff;
+    margin-bottom: 5px;
+}
+
+.question-text h2 {
+    font-size: clamp(16px, 2vw, 21px);
+    line-height: 1.35;
+    margin: 0;
+    font-weight: 600;
+}
+
+.rating-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.rating-button {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.09);
+    color: #ffffff;
+    font-size: 23px;
+    line-height: 1;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.choice input {
+.rating-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-2px);
+}
+
+.rating-button:active {
+    transform: translateY(0);
+}
+
+.rating-display {
+    width: 58px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.rating-display.has-rating {
+    color: #ffffff;
+    background: rgba(91, 211, 255, 0.18);
+    border-color: #72ddff;
+    box-shadow: 0 0 0 3px rgba(114, 221, 255, 0.1);
+}
+
+.rating-input {
     position: absolute;
-
     opacity: 0;
-
     pointer-events: none;
 }
 
-.choice-content {
-    display: flex;
+/* =========================================
+   RATING INSTRUCTIONS
+========================================= */
 
-    flex-direction: column;
-
-    justify-content: center;
-
-    min-height: 110px;
-
-    padding: 20px;
-
-    border-radius: 16px;
-
-    border:
-        2px solid rgba(255, 255, 255, 0.13);
-
-    background:
-        rgba(255, 255, 255, 0.07);
-
-    transition:
-        all 0.25s ease;
+.scale-guide {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 25px;
 }
 
-.choice-content strong {
-    font-size: 19px;
+.scale-guide-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 95px;
+    padding: 12px 8px;
+    text-align: center;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
+.scale-guide-item strong {
+    font-size: 28px;
     margin-bottom: 7px;
 }
 
-.choice-content small {
-    font-size: 12px;
-
-    color:
-        rgba(255, 255, 255, 0.6);
+.scale-guide-item span {
+    font-size: 11px;
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.choice:hover .choice-content {
-    transform: translateY(-3px);
-
-    background:
-        rgba(255, 255, 255, 0.13);
-
-    border-color:
-        rgba(255, 255, 255, 0.4);
+.rating-demo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.07);
 }
 
-.choice input:checked + .choice-content {
-    background:
-        rgba(91, 211, 255, 0.18);
-
-    border-color:
-        #72ddff;
-
-    box-shadow:
-        0 0 0 3px rgba(114, 221, 255, 0.1);
-
-    transform: translateY(-3px);
+.rating-demo > span {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
 }
 
+.rating-demo-control {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.rating-demo-control button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.rating-demo-control span {
+    font-weight: 700;
+}
 
 /* =========================================
    NAVIGATION
@@ -953,12 +1022,36 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .choices {
-        grid-template-columns: 1fr;
+    .scale-guide {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
     }
 
-    .choice-content {
-        min-height: 90px;
+    .scale-guide-item {
+        min-height: 82px;
+        padding: 8px 4px;
+    }
+
+    .scale-guide-item strong {
+        font-size: 22px;
+    }
+
+    .scale-guide-item span {
+        font-size: 9px;
+    }
+
+    .question-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .rating-control {
+        justify-content: flex-start;
+    }
+
+    .rating-demo {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .navigation-buttons {

@@ -12,31 +12,21 @@
 <body>
 
     <!-- =========================================
-         BACKGROUND VIDEO
+         BACKGROUND
+         The original background video is retained in the project,
+         but the survey now uses a light gray background as requested.
     ========================================== -->
     <div class="video-background">
-
-        <video
-            id="backgroundVideo"
-            autoplay
-            muted
-            loop
-            playsinline
-        >
+        <video id="backgroundVideo" autoplay muted loop playsinline aria-hidden="true">
             <source src="assets/clinic-background.mp4" type="video/mp4">
-
-            Your browser does not support HTML5 video.
         </video>
-
         <div class="video-overlay"></div>
-
     </div>
 
 
     <!-- =========================================
          MAIN SURVEY CONTAINER
     ========================================== -->
-
     <main class="survey-wrapper">
 
         <div class="survey-card">
@@ -44,1156 +34,431 @@
             <!-- =====================================
                  PROGRESS BAR
             ====================================== -->
-
             <div class="progress-container">
-
                 <div class="progress-info">
                     <span id="slideCounter">Introduction</span>
                     <span id="progressPercentage">0%</span>
                 </div>
 
                 <div class="progress-bar">
-                    <div
-                        id="progressBar"
-                        class="progress-fill"
-                    ></div>
+                    <div id="progressBar" class="progress-fill"></div>
                 </div>
-
             </div>
 
 
             <!-- =====================================
                  SURVEY FORM
             ====================================== -->
-
             <form id="surveyForm">
-
 
                 <!-- =================================
                      SLIDE 1 - INTRODUCTION
                 ================================== -->
-
-                <section
-                    class="survey-slide active"
-                    data-slide="0"
-                >
-
+                <section class="survey-slide active" data-slide="0">
                     <div class="intro-content">
-
-                        <div class="clinic-icon">
-                            🏥
-                        </div>
+                        <div class="clinic-icon">🏥</div>
 
                         <h1>
-                            Benedicto College
+                            Welcome to Benedicto College
                             <span>Clinic Area Survey</span>
                         </h1>
 
                         <p class="intro-description">
-
-                            We value your experience.
-
-                            This survey aims to understand how students
-                            perceive the clinic area, the quality of its
-                            services, and the effectiveness of the treatment
-                            provided by the Benedicto College Clinic.
-
+                            Welcome, and thank you for being here. We truly appreciate
+                            your time and willingness to share your experience with the
+                            Benedicto College Clinic Area. Your feedback will help us
+                            better understand the quality of our clinic services,
+                            facilities, and the experiences of those who use them.
                         </p>
 
                         <div class="survey-info">
-
                             <div>
                                 <strong>12</strong>
                                 <span>Questions</span>
                             </div>
 
                             <div>
-                                <strong>4</strong>
-                                <span>Choices</span>
+                                <strong>1–5</strong>
+                                <span>Rating Scale</span>
                             </div>
 
                             <div>
-                                <strong>3–5</strong>
-                                <span>Minutes</span>
+                                <strong>4</strong>
+                                <span>Question Pages</span>
                             </div>
-
                         </div>
-
                     </div>
 
-                    <button
-                        type="button"
-                        class="btn btn-primary"
-                        onclick="nextSlide()"
-                    >
-                        Begin Survey →
+                    <button type="button" class="btn btn-primary" onclick="nextSlide()">
+                        Continue to Instructions →
                     </button>
-
                 </section>
 
 
                 <!-- =================================
                      SLIDE 2 - INSTRUCTIONS
                 ================================== -->
-
-                <section
-                    class="survey-slide"
-                    data-slide="1"
-                >
-
+                <section class="survey-slide" data-slide="1">
                     <div class="slide-content">
+                        <div class="slide-number">01</div>
 
-                        <div class="slide-number">
-                            01
-                        </div>
-
-                        <h2>
-                            Survey Instructions
-                        </h2>
+                        <h2>How to Rate Your Experience</h2>
 
                         <p>
-                            Please read each question carefully and select
-                            the answer that best represents your experience
-                            with the Benedicto College Clinic Area.
+                            Please rate each statement based on your actual experience
+                            with the Benedicto College Clinic Area, including its
+                            services, facilities, usage, and the care you received.
                         </p>
 
-                        <div class="instruction-box">
-
-                            <div class="instruction-item">
-                                <span class="choice-circle excellent"></span>
-
-                                <div>
-                                    <strong>Excellent</strong>
-                                    <p>
-                                        Your experience was highly
-                                        satisfactory.
-                                    </p>
-                                </div>
+                        <div class="scale-guide">
+                            <div class="scale-guide-item">
+                                <strong>1</strong>
+                                <span>Least Satisfied</span>
                             </div>
-
-                            <div class="instruction-item">
-                                <span class="choice-circle good"></span>
-
-                                <div>
-                                    <strong>Good</strong>
-                                    <p>
-                                        Your experience was satisfactory.
-                                    </p>
-                                </div>
+                            <div class="scale-guide-item">
+                                <strong>2</strong>
+                                <span>Dissatisfied</span>
                             </div>
-
-                            <div class="instruction-item">
-                                <span class="choice-circle neutral"></span>
-
-                                <div>
-                                    <strong>Neutral</strong>
-                                    <p>
-                                        Your experience was neither positive
-                                        nor negative.
-                                    </p>
-                                </div>
+                            <div class="scale-guide-item">
+                                <strong>3</strong>
+                                <span>Neutral</span>
                             </div>
-
-                            <div class="instruction-item">
-                                <span class="choice-circle never"></span>
-
-                                <div>
-                                    <strong>Never</strong>
-                                    <p>
-                                        You have never experienced or
-                                        observed the situation described.
-                                    </p>
-                                </div>
+                            <div class="scale-guide-item">
+                                <strong>4</strong>
+                                <span>Satisfied</span>
                             </div>
+                            <div class="scale-guide-item">
+                                <strong>5</strong>
+                                <span>Very Satisfied</span>
+                            </div>
+                        </div>
 
+                        <div class="rating-demo">
+                            <span>Use the buttons beside each question:</span>
+                            <div class="rating-demo-control" aria-hidden="true">
+                                <button type="button">&lt;</button>
+                                <span>[ ]</span>
+                                <button type="button">&gt;</button>
+                            </div>
                         </div>
 
                         <div class="important-note">
-
                             <strong>Important:</strong>
+                            Every question must be answered before you can continue
+                            to the next page. You may use the <strong>&lt;</strong>
+                            button to lower a rating or the <strong>&gt;</strong>
+                            button to increase it. Ratings range from 1 to 5.
+                        </div>
+                    </div>
 
-                            Please answer every question before submitting
-                            the survey. You will not be able to continue to
-                            the next question without selecting an answer.
+                    <div class="navigation-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
+                            ← Back
+                        </button>
 
+                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
+                            Start Questions →
+                        </button>
+                    </div>
+                </section>
+
+
+                <!-- =================================
+                     SLIDE 3 - QUESTIONS 1–3
+                ================================== -->
+                <section class="survey-slide question-slide" data-slide="2">
+                    <div class="question-header">
+                        <span>Questions 1–3 of 12</span>
+                    </div>
+
+                    <div class="question-list">
+
+                        <div class="question-item" data-question="1">
+                            <div class="question-text">
+                                <span class="question-number">01</span>
+                                <h2>How satisfied are you with your overall experience at the Benedicto College Clinic Area?</h2>
+                            </div>
+
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="1" aria-label="Decrease rating for question 1">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay1" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="1" aria-label="Increase rating for question 1">&gt;</button>
+                                <input type="radio" name="q1" value="1" class="rating-input" aria-label="Question 1 rating">
+                            </div>
+                        </div>
+
+                        <div class="question-item" data-question="2">
+                            <div class="question-text">
+                                <span class="question-number">02</span>
+                                <h2>How satisfied are you with the cleanliness and sanitation of the clinic area?</h2>
+                            </div>
+
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="2" aria-label="Decrease rating for question 2">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay2" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="2" aria-label="Increase rating for question 2">&gt;</button>
+                                <input type="radio" name="q2" value="1" class="rating-input" aria-label="Question 2 rating">
+                            </div>
+                        </div>
+
+                        <div class="question-item" data-question="3">
+                            <div class="question-text">
+                                <span class="question-number">03</span>
+                                <h2>How satisfied are you with the comfort, condition, and overall environment of the clinic's waiting and treatment areas?</h2>
+                            </div>
+
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="3" aria-label="Decrease rating for question 3">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay3" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="3" aria-label="Increase rating for question 3">&gt;</button>
+                                <input type="radio" name="q3" value="1" class="rating-input" aria-label="Question 3 rating">
+                            </div>
                         </div>
 
                     </div>
 
                     <div class="navigation-buttons">
-
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            onclick="previousSlide()"
-                        >
-                            ← Back
-                        </button>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            onclick="nextSlide()"
-                        >
-                            Start Questions →
-                        </button>
-
+                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextSlide()">Next →</button>
                     </div>
-
                 </section>
 
 
                 <!-- =================================
-                     QUESTION 1
+                     SLIDE 4 - QUESTIONS 4–6
                 ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="2"
-                    data-question="1"
-                >
-
+                <section class="survey-slide question-slide" data-slide="3">
                     <div class="question-header">
-                        <span>Question 1 of 12</span>
+                        <span>Questions 4–6 of 12</span>
                     </div>
 
-                    <h2>
-                        How would you rate your overall experience with the
-                        Benedicto College Clinic Area?
-                    </h2>
+                    <div class="question-list">
 
-                    <div class="choices">
+                        <div class="question-item" data-question="4">
+                            <div class="question-text">
+                                <span class="question-number">04</span>
+                                <h2>How satisfied are you with the availability and accessibility of the clinic's services when you need them?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="4" aria-label="Decrease rating for question 4">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay4" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="4" aria-label="Increase rating for question 4">&gt;</button>
+                                <input type="radio" name="q4" value="1" class="rating-input" aria-label="Question 4 rating">
+                            </div>
+                        </div>
 
-                        <label class="choice">
-                            <input
-                                type="radio"
-                                name="q1"
-                                value="Excellent"
-                            >
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
+                        <div class="question-item" data-question="5">
+                            <div class="question-text">
+                                <span class="question-number">05</span>
+                                <h2>How satisfied are you with the helpfulness and responsiveness of the clinic staff?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="5" aria-label="Decrease rating for question 5">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay5" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="5" aria-label="Increase rating for question 5">&gt;</button>
+                                <input type="radio" name="q5" value="1" class="rating-input" aria-label="Question 5 rating">
+                            </div>
+                        </div>
 
-                        <label class="choice">
-                            <input
-                                type="radio"
-                                name="q1"
-                                value="Good"
-                            >
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input
-                                type="radio"
-                                name="q1"
-                                value="Neutral"
-                            >
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input
-                                type="radio"
-                                name="q1"
-                                value="Never"
-                            >
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never experienced it</small>
-                            </span>
-                        </label>
+                        <div class="question-item" data-question="6">
+                            <div class="question-text">
+                                <span class="question-number">06</span>
+                                <h2>How satisfied are you with the way clinic staff communicate information and instructions to you?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="6" aria-label="Decrease rating for question 6">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay6" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="6" aria-label="Increase rating for question 6">&gt;</button>
+                                <input type="radio" name="q6" value="1" class="rating-input" aria-label="Question 6 rating">
+                            </div>
+                        </div>
 
                     </div>
 
                     <div class="navigation-buttons">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            onclick="previousSlide()"
-                        >
-                            ← Back
-                        </button>
-
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            onclick="nextSlide()"
-                        >
-                            Next →
-                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextSlide()">Next →</button>
                     </div>
-
                 </section>
 
 
                 <!-- =================================
-                     QUESTION 2
+                     SLIDE 5 - QUESTIONS 7–9
                 ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="3"
-                    data-question="2"
-                >
-
+                <section class="survey-slide question-slide" data-slide="4">
                     <div class="question-header">
-                        <span>Question 2 of 12</span>
+                        <span>Questions 7–9 of 12</span>
                     </div>
 
-                    <h2>
-                        How would you rate the cleanliness and sanitation of
-                        the clinic area?
-                    </h2>
+                    <div class="question-list">
 
-                    <div class="choices">
+                        <div class="question-item" data-question="7">
+                            <div class="question-text">
+                                <span class="question-number">07</span>
+                                <h2>How satisfied are you with the promptness of the clinic's assistance when you seek help?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="7" aria-label="Decrease rating for question 7">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay7" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="7" aria-label="Increase rating for question 7">&gt;</button>
+                                <input type="radio" name="q7" value="1" class="rating-input" aria-label="Question 7 rating">
+                            </div>
+                        </div>
 
-                        <label class="choice">
-                            <input type="radio" name="q2" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
+                        <div class="question-item" data-question="8">
+                            <div class="question-text">
+                                <span class="question-number">08</span>
+                                <h2>How satisfied are you with the care and assistance you received from the clinic during your visit?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="8" aria-label="Decrease rating for question 8">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay8" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="8" aria-label="Increase rating for question 8">&gt;</button>
+                                <input type="radio" name="q8" value="1" class="rating-input" aria-label="Question 8 rating">
+                            </div>
+                        </div>
 
-                        <label class="choice">
-                            <input type="radio" name="q2" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q2" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q2" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never observed it</small>
-                            </span>
-                        </label>
+                        <div class="question-item" data-question="9">
+                            <div class="question-text">
+                                <span class="question-number">09</span>
+                                <h2>How satisfied are you with the clinic's ability to provide the health assistance or first aid you needed?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="9" aria-label="Decrease rating for question 9">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay9" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="9" aria-label="Increase rating for question 9">&gt;</button>
+                                <input type="radio" name="q9" value="1" class="rating-input" aria-label="Question 9 rating">
+                            </div>
+                        </div>
 
                     </div>
 
                     <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextSlide()">Next →</button>
                     </div>
-
                 </section>
 
 
                 <!-- =================================
-                     QUESTION 3
+                     SLIDE 6 - QUESTIONS 10–12
                 ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="4"
-                    data-question="3"
-                >
-
+                <section class="survey-slide question-slide" data-slide="5">
                     <div class="question-header">
-                        <span>Question 3 of 12</span>
+                        <span>Questions 10–12 of 12</span>
                     </div>
 
-                    <h2>
-                        How would you rate the comfort and condition of the
-                        clinic's waiting and treatment areas?
-                    </h2>
+                    <div class="question-list">
 
-                    <div class="choices">
+                        <div class="question-item" data-question="10">
+                            <div class="question-text">
+                                <span class="question-number">10</span>
+                                <h2>How satisfied are you with the quality of the treatment or health assistance provided by the clinic?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="10" aria-label="Decrease rating for question 10">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay10" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="10" aria-label="Increase rating for question 10">&gt;</button>
+                                <input type="radio" name="q10" value="1" class="rating-input" aria-label="Question 10 rating">
+                            </div>
+                        </div>
 
-                        <label class="choice">
-                            <input type="radio" name="q3" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
+                        <div class="question-item" data-question="11">
+                            <div class="question-text">
+                                <span class="question-number">11</span>
+                                <h2>How satisfied are you with how safe, comfortable, and properly cared for you felt in the clinic?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="11" aria-label="Decrease rating for question 11">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay11" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="11" aria-label="Increase rating for question 11">&gt;</button>
+                                <input type="radio" name="q11" value="1" class="rating-input" aria-label="Question 11 rating">
+                            </div>
+                        </div>
 
-                        <label class="choice">
-                            <input type="radio" name="q3" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q3" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q3" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never experienced it</small>
-                            </span>
-                        </label>
+                        <div class="question-item" data-question="12">
+                            <div class="question-text">
+                                <span class="question-number">12</span>
+                                <h2>How satisfied are you with the overall quality and effectiveness of the Benedicto College Clinic's services?</h2>
+                            </div>
+                            <div class="rating-control">
+                                <button type="button" class="rating-button decrease" data-action="decrease" data-question="12" aria-label="Decrease rating for question 12">&lt;</button>
+                                <div class="rating-display" id="ratingDisplay12" aria-live="polite">[ ]</div>
+                                <button type="button" class="rating-button increase" data-action="increase" data-question="12" aria-label="Increase rating for question 12">&gt;</button>
+                                <input type="radio" name="q12" value="1" class="rating-input" aria-label="Question 12 rating">
+                            </div>
+                        </div>
 
                     </div>
 
                     <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">← Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextSlide()">Finish Survey →</button>
                     </div>
-
                 </section>
 
 
                 <!-- =================================
-                     QUESTION 4
+                     SLIDE 7 - CONCLUSION / SUBMISSION
                 ================================== -->
+                <section class="survey-slide conclusion-slide" data-slide="6">
+                    <div class="success-icon">✓</div>
 
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="5"
-                    data-question="4"
-                >
-
-                    <div class="question-header">
-                        <span>Question 4 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the availability and accessibility
-                        of the clinic's services when you needed them?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q4" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q4" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q4" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q4" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never needed the service</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 5
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="6"
-                    data-question="5"
-                >
-
-                    <div class="question-header">
-                        <span>Question 5 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the friendliness and professionalism
-                        of the clinic staff?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q5" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q5" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q5" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q5" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never interacted with staff</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 6
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="7"
-                    data-question="6"
-                >
-
-                    <div class="question-header">
-                        <span>Question 6 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the speed and efficiency of the
-                        clinic staff in responding to your needs?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q6" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q6" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q6" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q6" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never requested assistance</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 7
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="8"
-                    data-question="7"
-                >
-
-                    <div class="question-header">
-                        <span>Question 7 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the quality of the medical attention
-                        you received at the clinic?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q7" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q7" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q7" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q7" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never received medical attention</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 8
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="9"
-                    data-question="8"
-                >
-
-                    <div class="question-header">
-                        <span>Question 8 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the effectiveness of the treatment
-                        or first aid provided by the clinic?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q8" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q8" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q8" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q8" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never received treatment</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 9
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="10"
-                    data-question="9"
-                >
-
-                    <div class="question-header">
-                        <span>Question 9 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the clarity of the information
-                        provided about your condition or treatment?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q9" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q9" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q9" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q9" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never received information</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 10
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="11"
-                    data-question="10"
-                >
-
-                    <div class="question-header">
-                        <span>Question 10 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate your level of confidence in the
-                        treatment provided by the clinic?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q10" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q10" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q10" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q10" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never received treatment</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 11
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="12"
-                    data-question="11"
-                >
-
-                    <div class="question-header">
-                        <span>Question 11 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the clinic's ability to make you
-                        feel safe and properly cared for?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q11" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q11" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q11" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q11" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never received clinic care</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Next →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     QUESTION 12
-                ================================== -->
-
-                <section
-                    class="survey-slide question-slide"
-                    data-slide="13"
-                    data-question="12"
-                >
-
-                    <div class="question-header">
-                        <span>Question 12 of 12</span>
-                    </div>
-
-                    <h2>
-                        How would you rate the overall quality and effectiveness
-                        of the services provided by the Benedicto College Clinic?
-                    </h2>
-
-                    <div class="choices">
-
-                        <label class="choice">
-                            <input type="radio" name="q12" value="Excellent">
-                            <span class="choice-content">
-                                <strong>Excellent</strong>
-                                <small>Highly satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q12" value="Good">
-                            <span class="choice-content">
-                                <strong>Good</strong>
-                                <small>Satisfactory</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q12" value="Neutral">
-                            <span class="choice-content">
-                                <strong>Neutral</strong>
-                                <small>Neither positive nor negative</small>
-                            </span>
-                        </label>
-
-                        <label class="choice">
-                            <input type="radio" name="q12" value="Never">
-                            <span class="choice-content">
-                                <strong>Never</strong>
-                                <small>Never used the clinic service</small>
-                            </span>
-                        </label>
-
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="btn btn-secondary" onclick="previousSlide()">
-                            ← Back
-                        </button>
-
-                        <button type="button" class="btn btn-primary" onclick="nextSlide()">
-                            Review & Submit →
-                        </button>
-                    </div>
-
-                </section>
-
-
-                <!-- =================================
-                     FINAL SUBMISSION SLIDE
-                ================================== -->
-
-                <section
-                    class="survey-slide conclusion-slide"
-                    data-slide="14"
-                >
-
-                    <div class="success-icon">
-                        ✓
-                    </div>
-
-                    <h2>
-                        You're All Set!
-                    </h2>
+                    <h2>Thank You for Your Time!</h2>
 
                     <p>
-                        Thank you for taking the time to share your experience
-                        with the Benedicto College Clinic.
+                        We sincerely appreciate your presence and your willingness
+                        to share your experience with the Benedicto College Clinic Area.
                     </p>
 
                     <p class="conclusion-subtext">
-                        Your responses will help provide valuable information
-                        about the clinic's facilities, services, treatment,
-                        and overall effectiveness.
+                        Your feedback is valuable and can help us better understand
+                        the clinic's services, facilities, and the experiences of the
+                        people who use them. Thank you for helping us improve.
                     </p>
 
                     <div class="response-summary">
-
-                        <span id="answeredCount">
-                            12 / 12 questions answered
-                        </span>
-
+                        <span id="answeredCount">0 / 12 questions answered</span>
                     </div>
 
-                    <button
-                        type="submit"
-                        id="submitButton"
-                        class="btn btn-submit"
-                    >
-                        Submit Survey ✓
+                    <button type="submit" id="submitButton" class="btn btn-submit">
+                        Submit My Response ✓
                     </button>
-
                 </section>
 
             </form>
-
         </div>
-
     </main>
 
 
     <!-- =========================================
          LARGE SUBMISSION NOTIFICATION
     ========================================== -->
+    <div id="notificationOverlay" class="notification-overlay" aria-hidden="true">
+        <div id="notificationBox" class="notification-box">
+            <div id="notificationIcon" class="notification-icon">✓</div>
 
-    <div
-        id="notificationOverlay"
-        class="notification-overlay"
-        aria-hidden="true"
-    >
-
-        <div
-            id="notificationBox"
-            class="notification-box"
-        >
-
-            <div
-                id="notificationIcon"
-                class="notification-icon"
-            >
-                ✓
-            </div>
-
-            <h2 id="notificationTitle">
-                Response Sent!
-            </h2>
+            <h2 id="notificationTitle">Response Sent!</h2>
 
             <p id="notificationMessage">
                 Your survey response has been successfully submitted.
             </p>
 
-            <button
-                id="notificationButton"
-                class="btn btn-primary notification-button"
-                onclick="closeNotification()"
-            >
+            <button id="notificationButton" class="btn btn-primary notification-button" onclick="closeNotification()">
                 Continue
             </button>
-
         </div>
-
     </div>
 
 
     <!-- =========================================
          VALIDATION MESSAGE
     ========================================== -->
-
-    <div
-        id="validationMessage"
-        class="validation-message"
-    >
-        ⚠️ Please select an answer before continuing.
+    <div id="validationMessage" class="validation-message">
+        ⚠️ Please answer all questions on this page before continuing.
     </div>
 
-<iframe
-      name="hiddenSubmitFrame"
-      style="display:none;"
-    ></iframe>
+    <iframe name="hiddenSubmitFrame" style="display:none;"></iframe>
 
     <script src="script.js"></script>
 </body>

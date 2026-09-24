@@ -23,6 +23,11 @@
         <div class="video-overlay"></div>
     </div>
 
+    <!-- BC–CCS logo watermark used across the entire survey background -->
+    <div class="bc-ccs-background" aria-hidden="true">
+        <img src="assets/bc-ccs-logo.png" alt="">
+    </div>
+
 
     <!-- =========================================
          MAIN SURVEY CONTAINER
@@ -56,7 +61,9 @@
                 ================================== -->
                 <section class="survey-slide active" data-slide="0">
                     <div class="intro-content">
-                        <div class="clinic-icon">🏥</div>
+                        <div class="intro-logo">
+                            <img src="assets/college-nursing-logo.png" alt="Benedicto College College of Nursing logo">
+                        </div>
 
                         <h1>
                             Welcome to Benedicto College
@@ -179,14 +186,37 @@
 
                         <div class="respondent-form">
                             <div class="form-group">
-                                <label for="respondentName">Name</label>
+                                <label for="respondentSurname">Surname / Family Name</label>
                                 <input
                                     type="text"
-                                    id="respondentName"
-                                    name="respondentName"
-                                    placeholder="Enter your name"
-                                    autocomplete="name"
+                                    id="respondentSurname"
+                                    name="respondentSurname"
+                                    placeholder="Enter your surname / family name"
+                                    autocomplete="family-name"
                                     required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="respondentFirstName">First Name</label>
+                                <input
+                                    type="text"
+                                    id="respondentFirstName"
+                                    name="respondentFirstName"
+                                    placeholder="Enter your first name"
+                                    autocomplete="given-name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="respondentMiddleName">Middle Name</label>
+                                <input
+                                    type="text"
+                                    id="respondentMiddleName"
+                                    name="respondentMiddleName"
+                                    placeholder="Enter your middle name"
+                                    autocomplete="additional-name"
                                 >
                             </div>
 
@@ -205,18 +235,76 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="respondentContact">Contact Number</label>
+                                <input
+                                    type="tel"
+                                    id="respondentContact"
+                                    name="respondentContact"
+                                    placeholder="Enter your contact number"
+                                    autocomplete="tel"
+                                    inputmode="tel"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
                                 <label for="educationalLevel">Educational Level</label>
                                 <select id="educationalLevel" name="educationalLevel" required>
                                     <option value="">Select educational level</option>
                                     <option value="Elementary">Elementary</option>
-                                    <option value="Junior High">Junior High</option>
-                                    <option value="Senior High">Senior High</option>
+                                    <option value="Junior High School">Junior High School</option>
+                                    <option value="Senior High School">Senior High School</option>
                                     <option value="College">College</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group conditional-field" id="gradeLevelGroup" hidden>
+                                <label for="gradeLevel">Grade Level</label>
+                                <select id="gradeLevel" name="gradeLevel">
+                                    <option value="">Select grade level</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group conditional-field" id="strandGroup" hidden>
+                                <label for="strand">SHS Strand</label>
+                                <select id="strand" name="strand">
+                                    <option value="">Select SHS strand</option>
+                                    <option value="STEM">STEM</option>
+                                    <option value="ABM">ABM</option>
+                                    <option value="HUMSS">HUMSS</option>
+                                    <option value="GAS">GAS</option>
+                                    <option value="TVL">TVL</option>
+                                    <option value="Arts and Design">Arts and Design</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group conditional-field" id="courseGroup" hidden>
+                                <label for="course">Course / Program</label>
+                                <input
+                                    type="text"
+                                    id="course"
+                                    name="course"
+                                    placeholder="Enter your course / program"
+                                >
+                            </div>
+
+                            <div class="form-group conditional-field" id="collegeYearGroup" hidden>
+                                <label for="collegeYearLevel">College Year Level</label>
+                                <select id="collegeYearLevel" name="collegeYearLevel">
+                                    <option value="">Select year level</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                    <option value="5th Year">5th Year</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>
 
-                        <p class="form-note">All fields are required before continuing.</p>
+                        <p class="form-note">Please complete the fields that apply to you before continuing.</p>
                     </div>
 
                     <div class="navigation-buttons">

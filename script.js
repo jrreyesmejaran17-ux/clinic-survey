@@ -3,8 +3,6 @@
 ========================================= */
 
 const SUBMISSION_URL = "https://script.google.com/macros/s/AKfycbwBG5g2f3Uj6T4-OH4Iv9RSDBpqfzwaZHmTZ-sXs8vm9EUsXl9-wj_9wR3MRF19HrrI/exec";
-
-
 /* =========================================
    SURVEY VARIABLES
 ========================================= */
@@ -35,19 +33,82 @@ const notificationTitle = document.getElementById("notificationTitle");
 const notificationMessage = document.getElementById("notificationMessage");
 const notificationButton = document.getElementById("notificationButton");
 
+const educationalLevel = document.getElementById("educationalLevel");
+const gradeLevelGroup = document.getElementById("gradeLevelGroup");
+const strandGroup = document.getElementById("strandGroup");
+const courseGroup = document.getElementById("courseGroup");
+const collegeYearGroup = document.getElementById("collegeYearGroup");
+const gradeLevel = document.getElementById("gradeLevel");
+
+function updateEducationFields() {
+    const level = educationalLevel.value;
+    const gradeOptions = {
+        Elementary: ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"],
+        "Junior High School": ["Grade 7", "Grade 8", "Grade 9", "Grade 10"],
+        "Senior High School": ["Grade 11", "Grade 12"]
+    };
+
+    gradeLevel.innerHTML = '<option value="">Select grade level</option>';
+
+    if (gradeOptions[level]) {
+        gradeOptions[level].forEach(grade => {
+            const option = document.createElement("option");
+            option.value = grade;
+            option.textContent = grade;
+            gradeLevel.appendChild(option);
+        });
+    }
+
+    const needsGrade = Boolean(gradeOptions[level]);
+    const isSeniorHigh = level === "Senior High School";
+    const isCollege = level === "College";
+
+    gradeLevelGroup.hidden = !needsGrade;
+    strandGroup.hidden = !isSeniorHigh;
+    courseGroup.hidden = !isCollege;
+    collegeYearGroup.hidden = !isCollege;
+
+    gradeLevel.required = needsGrade;
+    document.getElementById("strand").required = isSeniorHigh;
+    document.getElementById("course").required = isCollege;
+    document.getElementById("collegeYearLevel").required = isCollege;
+
+    if (!needsGrade) gradeLevel.value = "";
+    if (!isSeniorHigh) document.getElementById("strand").value = "";
+    if (!isCollege) {
+        document.getElementById("course").value = "";
+        document.getElementById("collegeYearLevel").value = "";
+    }
+}
+
+educationalLevel.addEventListener("change", updateEducationFields);
+updateEducationFields();
+
 
 /* =========================================
    RESPONDENT INFORMATION VALIDATION
 ========================================= */
 
 function validateRespondentInformation() {
-    const name = document.getElementById("respondentName");
+    const surname = document.getElementById("respondentSurname");
+    const firstName = document.getElementById("respondentFirstName");
     const age = document.getElementById("respondentAge");
+    const contact = document.getElementById("respondentContact");
     const educationalLevel = document.getElementById("educationalLevel");
+    const gradeLevel = document.getElementById("gradeLevel");
+    const strand = document.getElementById("strand");
+    const course = document.getElementById("course");
+    const collegeYearLevel = document.getElementById("collegeYearLevel");
 
-    if (!name.value.trim()) {
-        showValidationMessage([], "⚠️ Please enter your name before continuing.");
-        name.focus();
+    if (!surname.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your surname / family name before continuing.");
+        surname.focus();
+        return false;
+    }
+
+    if (!firstName.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your first name before continuing.");
+        firstName.focus();
         return false;
     }
 
@@ -57,10 +118,41 @@ function validateRespondentInformation() {
         return false;
     }
 
+    if (!contact.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your contact number before continuing.");
+        contact.focus();
+        return false;
+    }
+
     if (!educationalLevel.value) {
         showValidationMessage([], "⚠️ Please select your educational level before continuing.");
         educationalLevel.focus();
         return false;
+    }
+
+    if (["Elementary", "Junior High School", "Senior High School"].includes(educationalLevel.value) && !gradeLevel.value) {
+        showValidationMessage([], "⚠️ Please select your grade level before continuing.");
+        gradeLevel.focus();
+        return false;
+    }
+
+    if (educationalLevel.value === "Senior High School" && !strand.value) {
+        showValidationMessage([], "⚠️ Please select your SHS strand before continuing.");
+        strand.focus();
+        return false;
+    }
+
+    if (educationalLevel.value === "College") {
+        if (!course.value.trim()) {
+            showValidationMessage([], "⚠️ Please enter your course / program before continuing.");
+            course.focus();
+            return false;
+        }
+        if (!collegeYearLevel.value) {
+            showValidationMessage([], "⚠️ Please select your college year level before continuing.");
+            collegeYearLevel.focus();
+            return false;
+        }
     }
 
     return true;
@@ -285,13 +377,25 @@ document.querySelectorAll(".rating-button").forEach(button => {
 ========================================= */
 
 function validateRespondentInformation() {
-    const name = document.getElementById("respondentName");
+    const surname = document.getElementById("respondentSurname");
+    const firstName = document.getElementById("respondentFirstName");
     const age = document.getElementById("respondentAge");
+    const contact = document.getElementById("respondentContact");
     const educationalLevel = document.getElementById("educationalLevel");
+    const gradeLevel = document.getElementById("gradeLevel");
+    const strand = document.getElementById("strand");
+    const course = document.getElementById("course");
+    const collegeYearLevel = document.getElementById("collegeYearLevel");
 
-    if (!name.value.trim()) {
-        showValidationMessage([], "⚠️ Please enter your name before continuing.");
-        name.focus();
+    if (!surname.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your surname / family name before continuing.");
+        surname.focus();
+        return false;
+    }
+
+    if (!firstName.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your first name before continuing.");
+        firstName.focus();
         return false;
     }
 
@@ -301,10 +405,41 @@ function validateRespondentInformation() {
         return false;
     }
 
+    if (!contact.value.trim()) {
+        showValidationMessage([], "⚠️ Please enter your contact number before continuing.");
+        contact.focus();
+        return false;
+    }
+
     if (!educationalLevel.value) {
         showValidationMessage([], "⚠️ Please select your educational level before continuing.");
         educationalLevel.focus();
         return false;
+    }
+
+    if (["Elementary", "Junior High School", "Senior High School"].includes(educationalLevel.value) && !gradeLevel.value) {
+        showValidationMessage([], "⚠️ Please select your grade level before continuing.");
+        gradeLevel.focus();
+        return false;
+    }
+
+    if (educationalLevel.value === "Senior High School" && !strand.value) {
+        showValidationMessage([], "⚠️ Please select your SHS strand before continuing.");
+        strand.focus();
+        return false;
+    }
+
+    if (educationalLevel.value === "College") {
+        if (!course.value.trim()) {
+            showValidationMessage([], "⚠️ Please enter your course / program before continuing.");
+            course.focus();
+            return false;
+        }
+        if (!collegeYearLevel.value) {
+            showValidationMessage([], "⚠️ Please select your college year level before continuing.");
+            collegeYearLevel.focus();
+            return false;
+        }
     }
 
     return true;
@@ -436,9 +571,16 @@ surveyForm.addEventListener("submit", async function(event) {
     const surveyData = {
         surveyTitle: "Benedicto College Clinic Area Survey",
         submittedAt: new Date().toISOString(),
-        name: document.getElementById("respondentName").value.trim(),
+        surname: document.getElementById("respondentSurname").value.trim(),
+        firstName: document.getElementById("respondentFirstName").value.trim(),
+        middleName: document.getElementById("respondentMiddleName").value.trim(),
         age: document.getElementById("respondentAge").value.trim(),
+        contactNumber: document.getElementById("respondentContact").value.trim(),
         educationalLevel: document.getElementById("educationalLevel").value,
+        gradeLevel: document.getElementById("gradeLevel").value,
+        strand: document.getElementById("strand").value,
+        course: document.getElementById("course").value.trim(),
+        collegeYearLevel: document.getElementById("collegeYearLevel").value,
         responses: collectResponses()
     };
 

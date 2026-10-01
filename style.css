@@ -49,62 +49,51 @@ body::before {
     background:
         radial-gradient(
             circle at 15% 20%,
-            rgba(66, 196, 255, 0.30) 0%,
-            rgba(66, 196, 255, 0.12) 18%,
+            rgba(255, 180, 220, 0.38) 0%,
+            rgba(255, 105, 180, 0.18) 18%,
             transparent 42%
         ),
 
         radial-gradient(
             circle at 85% 25%,
-            rgba(38, 144, 255, 0.24) 0%,
-            rgba(38, 144, 255, 0.10) 20%,
+            rgba(255, 145, 190, 0.32) 0%,
+            rgba(220, 45, 95, 0.16) 20%,
             transparent 45%
         ),
 
         radial-gradient(
             circle at 75% 85%,
-            rgba(67, 210, 255, 0.28) 0%,
-            rgba(67, 210, 255, 0.09) 20%,
+            rgba(255, 175, 210, 0.34) 0%,
+            rgba(210, 35, 80, 0.15) 20%,
             transparent 44%
         ),
 
         radial-gradient(
             circle at 20% 85%,
-            rgba(29, 117, 212, 0.22) 0%,
+            rgba(190, 35, 70, 0.28) 0%,
             transparent 42%
         ),
 
         #123B5D;
 
     animation:
-        ambientGlowMove 14s ease-in-out infinite alternate;
+        pinkAmbientBreathing 5s ease-in-out infinite alternate;
 }
 
-@keyframes ambientGlowMove {
-
+@keyframes pinkAmbientBreathing {
     0% {
-        transform: translate3d(-2%, -1%, 0) scale(1);
-        filter: brightness(1);
-    }
-
-    25% {
-        transform: translate3d(2%, -2%, 0) scale(1.03);
-        filter: brightness(1.06);
+        opacity: 0.72;
+        filter: brightness(0.85);
     }
 
     50% {
-        transform: translate3d(1%, 2%, 0) scale(1.05);
-        filter: brightness(1.10);
-    }
-
-    75% {
-        transform: translate3d(-2%, 2%, 0) scale(1.03);
-        filter: brightness(1.05);
+        opacity: 1;
+        filter: brightness(1.12);
     }
 
     100% {
-        transform: translate3d(-1%, -2%, 0) scale(1);
-        filter: brightness(1);
+        opacity: 0.78;
+        filter: brightness(0.92);
     }
 }
 
@@ -127,44 +116,47 @@ body::after {
     background:
         radial-gradient(
             ellipse at top left,
-            rgba(99, 218, 255, 0.20),
+            rgba(255, 190, 220, 0.28),
             transparent 32%
         ),
 
         radial-gradient(
             ellipse at top right,
-            rgba(72, 179, 255, 0.16),
-            transparent 30%
+            rgba(255, 135, 185, 0.24),
+            transparent 32%
         ),
 
         radial-gradient(
             ellipse at bottom left,
-            rgba(56, 164, 255, 0.13),
-            transparent 30%
+            rgba(235, 70, 120, 0.20),
+            transparent 34%
         ),
 
         radial-gradient(
             ellipse at bottom right,
-            rgba(85, 220, 255, 0.19),
-            transparent 32%
+            rgba(255, 165, 205, 0.25),
+            transparent 34%
         );
 
     animation:
-        cornerGlow 9s ease-in-out infinite alternate;
+        pinkCornerBreathing 5s ease-in-out infinite alternate;
 }
 
-@keyframes cornerGlow {
+@keyframes pinkCornerBreathing {
 
     0% {
         opacity: 0.65;
+        filter: brightness(0.85);
     }
 
     50% {
         opacity: 1;
+        filter: brightness(1.12);
     }
 
     100% {
         opacity: 0.72;
+        filter: brightness(0.90);
     }
 }
 
@@ -346,13 +338,19 @@ body::after {
     0% {
         box-shadow:
             0 30px 80px rgba(0, 0, 0, 0.35),
-            0 0 35px rgba(64, 190, 255, 0.08);
+            0 0 35px rgba(210, 35, 80, 0.10);
+    }
+
+    50% {
+        box-shadow:
+            0 30px 80px rgba(0, 0, 0, 0.35),
+            0 0 55px rgba(255, 150, 200, 0.20);
     }
 
     100% {
         box-shadow:
             0 30px 80px rgba(0, 0, 0, 0.35),
-            0 0 65px rgba(64, 190, 255, 0.17);
+            0 0 40px rgba(190, 25, 70, 0.13);
     }
 }
 
@@ -375,29 +373,29 @@ body::after {
     background:
         radial-gradient(
             circle at 0% 0%,
-            rgba(93, 221, 255, 0.25),
+            rgba(255, 185, 220, 0.32),
             transparent 22%
         ),
 
         radial-gradient(
             circle at 100% 0%,
-            rgba(64, 169, 255, 0.18),
+            rgba(255, 135, 185, 0.25),
             transparent 22%
         ),
 
         radial-gradient(
             circle at 100% 100%,
-            rgba(84, 218, 255, 0.22),
+            rgba(255, 165, 205, 0.28),
             transparent 24%
         ),
 
         radial-gradient(
             circle at 0% 100%,
-            rgba(50, 151, 255, 0.14),
+            rgba(205, 35, 80, 0.20),
             transparent 24%
         );
 
-    opacity: 0.75;
+    opacity: 0.80;
 
     animation:
         cardCorners 8s ease-in-out infinite alternate;
@@ -407,13 +405,19 @@ body::after {
 
     0% {
         opacity: 0.45;
+        filter: brightness(0.85);
+    }
+
+    50% {
+        opacity: 1;
+        filter: brightness(1.12);
     }
 
     100% {
-        opacity: 0.90;
+        opacity: 0.55;
+        filter: brightness(0.90);
     }
 }
-
 
 /* =========================================
    PROGRESS
@@ -940,26 +944,22 @@ body::after {
 }
 
 .rating-button:hover {
-    background:
-        rgba(88, 214, 255, 0.16);
-
-    border-color:
-        rgba(114, 221, 255, 0.70);
+    background: rgba(255, 150, 200, 0.16);
+    border-color: rgba(255, 180, 220, 0.75);
 
     box-shadow:
-        0 0 18px rgba(88, 214, 255, 0.22);
+        0 0 18px rgba(255, 150, 200, 0.32),
+        0 0 32px rgba(210, 35, 80, 0.15);
 
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .rating-button:active {
-    transform:
-        translateY(0)
-        scale(0.96);
+    transform: translateY(0) scale(0.96);
 
     box-shadow:
-        0 0 28px rgba(88, 214, 255, 0.35);
+        0 0 28px rgba(255, 150, 200, 0.45),
+        0 0 42px rgba(210, 35, 80, 0.22);
 }
 
 .rating-display {
@@ -967,48 +967,36 @@ body::after {
     height: 50px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.22);
 
-    border:
-        2px solid rgba(255, 255, 255, 0.22);
-
-    background:
-        rgba(255, 255, 255, 0.06);
-
-    color:
-        rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
 
     font-size: 20px;
-
     font-weight: 700;
 
-    transition:
-        all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .rating-display.has-rating {
     color: #ffffff;
 
-    background:
-        rgba(91, 211, 255, 0.18);
-
-    border-color:
-        #72ddff;
+    background: rgba(255, 120, 180, 0.20);
+    border-color: #ff9acb;
 
     box-shadow:
-        0 0 0 3px rgba(114, 221, 255, 0.1),
-        0 0 20px rgba(88, 214, 255, 0.16);
+        0 0 0 3px rgba(255, 154, 203, 0.12),
+        0 0 20px rgba(255, 120, 180, 0.28),
+        0 0 34px rgba(190, 25, 70, 0.16);
 }
 
 .rating-input {
     position: absolute;
-
     opacity: 0;
-
     pointer-events: none;
 }
 
@@ -1195,7 +1183,8 @@ body::after {
 
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.3),
-        0 0 22px rgba(114, 221, 255, 0.22);
+        0 0 22px rgba(255, 150, 200, 0.35),
+        0 0 42px rgba(210, 35, 80, 0.18);
 }
 
 .btn-primary:active {
@@ -1204,7 +1193,8 @@ body::after {
         scale(0.98);
 
     box-shadow:
-        0 0 28px rgba(114, 221, 255, 0.35);
+        0 0 28px rgba(255, 150, 200, 0.45),
+        0 0 48px rgba(210, 35, 80, 0.22);
 }
 
 .btn-secondary {
@@ -1223,13 +1213,14 @@ body::after {
 
 .btn-secondary:hover {
     background:
-        rgba(88, 214, 255, 0.14);
+        rgba(255, 150, 200, 0.14);
 
     border-color:
-        rgba(114, 221, 255, 0.55);
+        rgba(255, 180, 220, 0.65);
 
     box-shadow:
-        0 0 22px rgba(88, 214, 255, 0.18);
+        0 0 22px rgba(255, 150, 200, 0.30),
+        0 0 38px rgba(210, 35, 80, 0.16);
 }
 
 .btn-secondary:active {
@@ -1237,7 +1228,8 @@ body::after {
         scale(0.98);
 
     box-shadow:
-        0 0 30px rgba(88, 214, 255, 0.28);
+        0 0 30px rgba(255, 150, 200, 0.45),
+        0 0 48px rgba(210, 35, 80, 0.24);
 }
 
 .btn-submit {
@@ -1252,11 +1244,11 @@ body::after {
     color: #ffffff;
 
     background:
-        linear-gradient(
-            135deg,
-            #147ca3,
-            #0a526f
-        );
+    linear-gradient(
+        135deg,
+        #e85b96,
+        #a91e45
+    );
 
     border:
         1px solid rgba(255, 255, 255, 0.25);
@@ -1271,7 +1263,8 @@ body::after {
 
     box-shadow:
         0 15px 35px rgba(0, 0, 0, 0.25),
-        0 0 30px rgba(88, 214, 255, 0.24);
+        0 0 30px rgba(255, 150, 200, 0.40),
+        0 0 48px rgba(210, 35, 80, 0.22);
 }
 
 .btn-submit:active {
@@ -1280,7 +1273,8 @@ body::after {
         scale(0.99);
 
     box-shadow:
-        0 0 35px rgba(88, 214, 255, 0.38);
+        0 0 35px rgba(255, 150, 200, 0.50),
+        0 0 55px rgba(210, 35, 80, 0.28);
 }
 
 .btn:disabled {
